@@ -1,11 +1,9 @@
 import java.util.Scanner;
-
-public class PrestasiMahasiswa_kel8 {
+public class PrestasiMahasiswa_kel8DataPrestasi {
     static String[][] prestasi = new String[50][4]; 
     static int[] tahunPrestasi = new int[50];          
     static int jmlPrestasi = 0;
     static Scanner sc = new Scanner(System.in);
-
     public static void main(String[] args) {
         int pilihan;
         do {
@@ -18,15 +16,26 @@ public class PrestasiMahasiswa_kel8 {
             pilihan = sc.nextInt();
             sc.nextLine(); 
             switch (pilihan) {
-                case 1 -> tambahdataPrestasi();
-                case 2 -> tampilkanPrestasi();
-                case 3 -> analisisPrestasi();
-                case 4 -> System.out.println("Program selesai. Terima kasih!");
-                default -> System.out.println("Pilihan tidak valid. Silakan coba lagi.");
+                case 1:
+                tambahdataPrestasi();
+                break;
+                case 2:
+                tampilkanPrestasi();
+                break;
+                case 3:
+                analisisPrestasi();
+                break;
+                case 4:
+                System.out.println("Program selesai. Terima kasih!");
+                break;
+                default:
+                System.out.println("Pilihan tidak valid. Silakan coba lagi.");
+                break;
             }
         } while (pilihan != 4);
     }
-
+    
+    
     static void tambahdataPrestasi() {
         System.out.print("Masukkan Nama Mahasiswa: ");
         prestasi[jmlPrestasi][0] = sc.nextLine();
@@ -60,36 +69,5 @@ public class PrestasiMahasiswa_kel8 {
 
         jmlPrestasi++;
         System.out.println("Data prestasi berhasil ditambahkan.");
-    }
-
-    static void tampilkanPrestasi() {
-        if (jmlPrestasi == 0) {
-            System.out.println("Belum ada data prestasi.");
-        } else {
-            System.out.println("\n===== DAFTAR PRESTASI MAHASISWA =====");
-            for (int i = 0; i < jmlPrestasi; i++) {
-                System.out.printf("Nama: %s | NIM: %s | Jenis: %s | Tingkat: %s | Tahun: %d%n",
-                        prestasi[i][0], prestasi[i][1], prestasi[i][2], prestasi[i][3], tahunPrestasi[i]);
-            }
-        }
-    }
-
-    static void analisisPrestasi() {
-        System.out.print("Masukkan Jenis Prestasi untuk Analisis: ");
-        String jenisAnalisis = sc.nextLine();
-        boolean ditemukan = false;
-
-        System.out.println("\n===== ANALISIS PRESTASI =====");
-        for (int i = 0; i < jmlPrestasi; i++) {
-            if (prestasi[i][2].equalsIgnoreCase(jenisAnalisis)) {
-                System.out.printf("Nama: %s | NIM: %s | Tingkat: %s | Tahun: %d%n",
-                        prestasi[i][0], prestasi[i][1], prestasi[i][3], tahunPrestasi[i]);
-                ditemukan = true;
-            }
-        }
-
-        if (!ditemukan) {
-            System.out.println("Tidak ada data prestasi dengan jenis tersebut.");
-        }
     }
 }
