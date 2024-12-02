@@ -1,0 +1,37 @@
+import java.util.Scanner;
+public class PrestasiMahasiswa_kel8fungsimain {
+    static String[][] prestasi = new String[50][4]; 
+    static int[] tahunPrestasi = new int[50];          
+    static int jmlPrestasi = 0;
+    static Scanner sc = new Scanner(System.in);
+    public static void main(String[] args) {
+        int pilihan;
+        do {
+            System.out.println("\n===== PENCATATAN PRESTASI MAHASISWA =====");
+            System.out.println("1. Tambah Data Prestasi Mahasiswa");
+            System.out.println("2. Tampilkan Semua Prestasi");
+            System.out.println("3. Analisis Prestasi Berdasarkan Jenis");
+            System.out.println("4. Keluar");
+            System.out.print("Pilih menu: ");
+            pilihan = sc.nextInt();
+            sc.nextLine(); 
+            switch (pilihan) {
+                case 1:
+                tambahdataPrestasi();
+                break;
+                case 2:
+                tampilkanPrestasi();
+                break;
+                case 3:
+                analisisPrestasi();
+                break;
+                case 4:
+                System.out.println("Program selesai. Terima kasih!");
+                break;
+                default:
+                System.out.println("Pilihan tidak valid. Silakan coba lagi.");
+                break;
+            }
+        } while (pilihan != 4);
+    }
+}
